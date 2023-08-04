@@ -22,12 +22,14 @@ const createRequest = (options = {}) => {
     xhr.responseType = options.responseType;
 
     xhr.onload = () => {
-        // const data = JSON.parse(xhr.response);
-        const result = xhr.response;
-        // console.log(result);
-        options.callback(result.success, result);
+        try {
+            const result = xhr.response;
+            options.callback(null, result);
+        } catch (e) {
+            options.callback(e, null);
+        }
     };
-    
+
     xhr.onerror = () => {
         console.warn('Ошибка соединения!');
     };

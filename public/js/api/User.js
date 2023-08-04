@@ -42,10 +42,13 @@ class User {
       data: User.current(),
       callback: (err, response) => {
         console.log('User.fetch', response);
+        if (err !== null) {
+          console.warn(err);
+        }
         if (response && response.user) {
           this.setCurrent(response.user);
         }
-        if (!response.success) {
+        if (!response?.success) {
           this.unsetCurrent();
         }
         callback();
@@ -68,17 +71,24 @@ class User {
       data,
       callback: (err, response) => {
         console.log('User.login', err, response);
+        if (err !== null) {
+          console.warn(err);
+        }
         if (response && response.user) {
           this.setCurrent(response.user);
+          callback();
         }
-        callback(err, response);
+        if (response && !response.success) {
+          console.warn('Авторизация провалена. ', response.error);
+        }
+        App.getForm('login').element.reset();
       }
     });
   }
 
   /**
    * Производит попытку регистрации пользователя.
-   * После успешной авторизации необходимо
+   * После успешной регистрации необходимо
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
@@ -90,11 +100,18 @@ class User {
       responseType: 'json',
       data,
       callback: (err, response) => {
-        console.log('User.register', response);
+        console.log('User.register', err, response);
+        if (err !== null) {
+          console.warn(err);
+        }
         if (response && response.user) {
           this.setCurrent(response.user);
+          callback();
         }
-        callback(err, response);
+        if (response && !response.success) {
+          console.warn('Регистрация пользователя невозможна. ', response.error);
+        }
+        App.getForm('register').element.reset();
       }
     });
   }
@@ -112,10 +129,15 @@ class User {
       data: '',
       callback: (err, response) => {
         console.log('User.logout', response);
+        if (err !== null) {
+          console.warn(err);
+        }
         if (response.success) {
           this.unsetCurrent();
+          callback();
+        } else {
+          console.warn('Произошла ошибка. ', response.error);
         }
-        callback(err, response);
       }
     });
   }

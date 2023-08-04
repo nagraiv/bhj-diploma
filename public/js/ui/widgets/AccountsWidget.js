@@ -61,9 +61,15 @@ class AccountsWidget {
         User.current(),
         (err, response) => {
           console.log('AccountsWidget.update -> Account.list', err, response);
+          if (err !== null) {
+            console.warn(err);
+          }
           that.clear();
           if (response && response.data) {
             that.renderItem(response.data);
+          }
+          if (response && !response.success) {
+            console.warn('Не удалось получить список счетов. ', response.error);
           }
         }
     );

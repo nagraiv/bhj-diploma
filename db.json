@@ -26,6 +26,12 @@
       "email": "vovka@gmail.com",
       "password": "123456",
       "id": "206b53clkqj2oj1"
+    },
+    {
+      "name": "Маша",
+      "email": "mariya@mail.ru",
+      "password": "mariya",
+      "id": "206b1r4lkwxddm3"
     }
   ],
   "accounts": [

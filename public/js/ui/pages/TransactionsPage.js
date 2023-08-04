@@ -61,12 +61,17 @@ class TransactionsPage {
       console.log(data);
       Account.remove( data , (err, response) => {
         console.log('TransactionPage.removeAccount -> Account.remove', err, response);
+        if (err !== null) {
+          console.warn(err);
+        }
         if (response && response.success) {
           App.getWidget('accounts').update();
           // App.updateWidgets();
           App.getForm('createIncome').renderAccountsList();
           App.getForm('createExpense').renderAccountsList();
           // App.updateForms();
+        } else {
+          console.warn('Не получилось удалить счёт. ');
         }
       });
       this.clear();
@@ -86,10 +91,15 @@ class TransactionsPage {
       console.log(data);
       Transaction.remove(data, (err, response) => {
         console.log('TransactionPage.removeTransaction -> Transaction.remove', err, response);
+        if (err !== null) {
+          console.warn(err);
+        }
         if (response && response.success) {
           // App.update()
           this.update();
           App.getWidget('accounts').update();
+        } else {
+          console.warn('Не получилось удалить транзакцию. ');
         }
       });
     }
@@ -106,11 +116,27 @@ class TransactionsPage {
       this.lastOptions = options;
       Account.get(options.account_id, (err, response) => {
         console.log('TransactionPage.render -> Account.get', err, response);
-        this.renderTitle(response.data.name);
+        if (err !== null) {
+          console.warn(err);
+        }
+        if (response && response.data) {
+          this.renderTitle(response.data.name);
+        }
+        if (response && !response.success) {
+          console.warn('Нет данных о счёте. ', response.error);
+        }
       });
       Transaction.list({ 'account_id' : options.account_id }, (err, response) => {
         console.log('TransactionPage.render -> Transaction.list', err, response);
-        this.renderTransactions(response.data);
+        if (err !== null) {
+          console.warn(err);
+        }
+        if (response && response.data) {
+          this.renderTransactions(response.data);
+        }
+        if (response && !response.success) {
+          console.warn('Не удалось получить список транзакций. ', response.error);
+        }
       });
     }
   }

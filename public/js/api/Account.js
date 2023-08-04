@@ -15,7 +15,6 @@ class Account extends Entity {
       method: 'GET',
       responseType: 'json',
       data: '',
-      // data: { 'id' : id },
       callback
     });
   }

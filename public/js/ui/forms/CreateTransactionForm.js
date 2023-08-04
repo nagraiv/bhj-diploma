@@ -21,6 +21,9 @@ class CreateTransactionForm extends AsyncForm {
       User.current(),
       (err, response) => {
         console.log('CreateTransactionForm.renderAccountsList -> Account.list', err, response);
+        if (err !== null) {
+          console.warn(err);
+        }
         if (response && response.data) {
           const selectIncome = document.getElementById('income-accounts-list');
           const selectExpense = document.getElementById('expense-accounts-list');
@@ -30,6 +33,9 @@ class CreateTransactionForm extends AsyncForm {
             selectIncome.insertAdjacentHTML('beforeend', `<option value="${account.id}">${account.name}</option>`);
             selectExpense.insertAdjacentHTML('beforeend', `<option value="${account.id}">${account.name}</option>`);
           });
+        }
+        if (response && !response.success) {
+          console.warn('Не удалось получить список счетов. ', response.error);
         }
       }
     );
@@ -45,12 +51,17 @@ class CreateTransactionForm extends AsyncForm {
   onSubmit(data) {
     Transaction.create(data, (err, response) => {
       console.log('CreateTransactionForm.onSubmit -> Transaction.create', err, response);
-      if (response) {
+      if (err !== null) {
+        console.warn(err);
+      }
+      if (response && response.success) {
         App.getModal( 'newIncome' ).close();
         App.getModal( 'newExpense' ).close();
         App.getForm('createIncome').element.reset();
         App.getForm('createExpense').element.reset();
         App.update();
+      } else {
+        console.warn('Не удалось добавить транзакцию. ', response.error);
       }
     });
   }
