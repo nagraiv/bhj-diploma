@@ -12,7 +12,12 @@ class TransactionsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
+    if (!element) {
+      throw new Error('Отсутствует обязательный аргумент - элемент виджета.');
+    }
+    this.element = element;
 
+    this.registerEvents();
   }
   /**
    * Регистрирует обработчики нажатия на
@@ -21,6 +26,12 @@ class TransactionsWidget {
    * экземпляра окна
    * */
   registerEvents() {
+    this.element.querySelector('.create-income-button').addEventListener('click', function(e) {
+      App.getModal('newIncome').open();
+    });
 
+    this.element.querySelector('.create-expense-button').addEventListener('click', function(e) {
+      App.getModal('newExpense').open();
+    });
   }
 }

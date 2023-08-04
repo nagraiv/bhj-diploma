@@ -26,7 +26,7 @@ router.put("/", upload.none(), function(request, response) {
         response.json({success: false, error: "Счёт с таким именем уже существует"});
         return;
     }
-    
+
     let creatingAccount = {name, user_id:userValue.id, id: uniqid()};//создаваемый аккаунт
     db.get("accounts").push(creatingAccount).write();//добавление созданного аккаунта к уже существующим и запись в БД
     response.json({success: true, account: creatingAccount});// отправка ответа с данными

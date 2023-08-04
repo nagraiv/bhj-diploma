@@ -13,7 +13,12 @@ class AsyncForm {
    * через registerEvents()
    * */
   constructor(element) {
+    if (!element) {
+      throw new Error('Отсутствует обязательный аргумент - элемент формы.');
+    }
+    this.element = element;
 
+    this.registerEvents();
   }
 
   /**
@@ -21,7 +26,15 @@ class AsyncForm {
    * вызывает метод submit()
    * */
   registerEvents() {
-
+    const that = this;
+    this.element.addEventListener('submit', function(e) {
+      if (this.checkValidity()) {
+        e.preventDefault();
+        that.submit();
+      } else {
+        console.log('Форма не валидна!');
+      }
+    })
   }
 
   /**
@@ -32,7 +45,7 @@ class AsyncForm {
    * }
    * */
   getData() {
-
+    return new FormData(this.element);
   }
 
   onSubmit(options){
@@ -44,6 +57,6 @@ class AsyncForm {
    * данные, полученные из метода getData()
    * */
   submit() {
-
+    this.onSubmit(this.getData());
   }
 }

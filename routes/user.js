@@ -15,16 +15,16 @@ router.post("/register",upload.none(), function(request, response) {
     //получение параметров из тела запроса
     const { name, email, password } = request.body;
     //формирование ошибки (не обязательна, но желательна т.к. валидация есть на UI)
-    error = "";
+    let error = "";
     if(name === "")
         error += 'Поле Имя обязательно для заполнения. ';
 
     if(email === "")
-        error += 'Поле E-Mail адрес для заполнения. ' ;
+        error += 'Поле E-Mail обязательно для заполнения. ' ;
 
     if(password === "")
         error += 'Поле Пароль обязательно для заполнения.';
-    
+
     //если ошибка сформирована...
     if(error !== "")
         response.json({success: false, error});//отправляем ошибку

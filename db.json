@@ -1,0 +1,276 @@
+{
+  "users": [
+    {
+      "name": "demo",
+      "email": "demo@demo",
+      "password": "demo",
+      "id": "1"
+    },
+    {
+      "id": "206b6rglkmyhwoc"
+    },
+    {
+      "id": "206b808lkmyickm"
+    },
+    {
+      "id": "206b6tolkmyo44i"
+    },
+    {
+      "name": "Ivan",
+      "email": "ivan@gmail.com",
+      "password": "12345",
+      "id": "206bo4lko3ogte"
+    },
+    {
+      "name": "Vovka",
+      "email": "vovka@gmail.com",
+      "password": "123456",
+      "id": "206b53clkqj2oj1"
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Банк",
+      "user_id": "1",
+      "id": "1"
+    },
+    {
+      "name": "Магазин",
+      "user_id": "1",
+      "id": "2"
+    },
+    {
+      "name": "Бизнес",
+      "user_id": "1",
+      "id": "3"
+    },
+    {
+      "name": "карманные деньги",
+      "user_id": "206b53clkqj2oj1",
+      "id": "206b784lkqj3eli"
+    },
+    {
+      "name": "долги",
+      "user_id": "206b53clkqj2oj1",
+      "id": "206b5d8lkrvntox"
+    }
+  ],
+  "transactions": [
+    {
+      "account_id": "1",
+      "created_at": "2019-09-15 10:24:02",
+      "id": "1",
+      "name": "Кредит",
+      "sum": 5000,
+      "type": "expense",
+      "user_id": "1"
+    },
+    {
+      "account_id": "1",
+      "created_at": "2019-09-17 15:53:02",
+      "id": "2",
+      "name": "Баланс на дебетовке",
+      "sum": 3200,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "1",
+      "created_at": "2019-09-19 20:12:02",
+      "id": "3",
+      "name": "Копилка",
+      "sum": 1500,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "2",
+      "created_at": "2019-09-26 16:23:02",
+      "id": "4",
+      "name": "Молочные продукты",
+      "sum": 100,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "2",
+      "created_at": "2019-09-25 15:03:02",
+      "id": "5",
+      "name": "Фрукты",
+      "sum": 250,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "2",
+      "created_at": "2019-09-25 15:03:02",
+      "id": "17",
+      "name": "Овощи",
+      "sum": 300,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "2",
+      "created_at": "2019-09-26 14:47:02",
+      "id": "6",
+      "name": "Мясо",
+      "sum": 600,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "2",
+      "created_at": "2019-09-27 13:27:02",
+      "id": "7",
+      "name": "Долг в банк",
+      "sum": 5000,
+      "type": "expense",
+      "user_id": "1"
+    },
+    {
+      "account_id": "3",
+      "created_at": "2017-10-15 13:27:02",
+      "id": "9",
+      "name": "На банду",
+      "sum": 15000,
+      "type": "expense",
+      "user_id": "1"
+    },
+    {
+      "account_id": "3",
+      "created_at": "2017-09-17 13:27:02",
+      "id": "10",
+      "name": "На стволы",
+      "sum": 6000,
+      "type": "expense",
+      "user_id": "1"
+    },
+    {
+      "account_id": "3",
+      "created_at": "2017-12-27 13:27:02",
+      "id": "11",
+      "name": "Прибыль с банка",
+      "sum": 1500000,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "3",
+      "created_at": "2018-01-15 13:27:02",
+      "id": "12",
+      "name": "Прибыль с магазина",
+      "sum": 300000,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "3",
+      "created_at": "2018-01-15 13:27:02",
+      "id": "13",
+      "name": "Подарок сизого",
+      "sum": 20000,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "3",
+      "created_at": "2017-09-15 13:27:02",
+      "id": "14",
+      "name": "На охрану",
+      "sum": 60000,
+      "type": "expense",
+      "user_id": "1"
+    },
+    {
+      "account_id": "3",
+      "created_at": "2017-10-15 13:27:02",
+      "id": "15",
+      "name": "На бумер",
+      "sum": 300000,
+      "type": "expense",
+      "user_id": "1"
+    },
+    {
+      "id": "206b65wlkqgn74f",
+      "type": "income",
+      "name": "на сапоги",
+      "sum": 10000,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2023-07-31T05:59:29.487Z"
+    },
+    {
+      "id": "206b5v0lkqguuhe",
+      "type": "expense",
+      "name": "сигареты",
+      "sum": 800,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2023-07-31T06:05:26.353Z"
+    },
+    {
+      "id": "206b368lkqh2ms6",
+      "type": "expense",
+      "name": "выплата поставщику",
+      "sum": 50000,
+      "account_id": "3",
+      "user_id": "1",
+      "created_at": "2023-07-31T06:11:29.621Z"
+    },
+    {
+      "id": "206b58clkqiu0mo",
+      "type": "income",
+      "name": "пополнение",
+      "sum": 8500,
+      "account_id": "2",
+      "user_id": "1",
+      "created_at": "2023-07-31T07:00:46.895Z"
+    },
+    {
+      "id": "206b2polkqj3wdr",
+      "type": "income",
+      "name": "подарили на ДР",
+      "sum": 5000,
+      "account_id": "206b784lkqj3eli",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-07-31T07:08:27.950Z"
+    },
+    {
+      "id": "206b2uolkqj4s98",
+      "type": "expense",
+      "name": "шоколадка",
+      "sum": 150,
+      "account_id": "206b784lkqj3eli",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-07-31T07:09:09.260Z"
+    },
+    {
+      "id": "206b58olkru8rx5",
+      "type": "income",
+      "name": "нашёл под лавкой",
+      "sum": 500,
+      "account_id": "206b784lkqj3eli",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-01T05:07:57.400Z"
+    },
+    {
+      "id": "206b4wclkttdcbf",
+      "type": "income",
+      "name": "Капитализация счёта",
+      "sum": 7900,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2023-08-02T14:19:03.195Z"
+    },
+    {
+      "id": "206b8u4lkv2l6o1",
+      "type": "income",
+      "name": "заныкал",
+      "sum": 10000,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2023-08-03T11:24:51.840Z"
+    }
+  ]
+}
