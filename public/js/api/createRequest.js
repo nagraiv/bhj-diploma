@@ -4,40 +4,45 @@
  * */
 const createRequest = (options = {}) => {
     const xhr = new XMLHttpRequest();
-    if (options.method.toUpperCase() === 'GET' && options.data) {
+    let requestUrl = options.url;
+    let requestData = options.data || null;
+    let result = null;
+    let error = null;
+    xhr.onload = () => {
+        result = xhr.response;
+        options.callback(error, result);
+    };
+    xhr.onerror = () => {
+        // console.warn('Ошибка соединения!');
+        error = new Error('Ошибка соединения!');
+        options.callback(error, result);
+    };
+
+    if (options.method.toUpperCase() === 'GET' && requestData) {
         let first = true;
-        for ([key, value] of Object.entries(options.data)) {
+        for ([key, value] of Object.entries(requestData)) {
             if (first) {
-                options.url += '?';
+                requestUrl += '?';
                 first = false;
             } else {
-                options.url += '&';
+                requestUrl += '&';
             }
-            options.url += `${key}=${value}`;
+            requestUrl += `${key}=${value}`;
         }
+        requestData = null;
     }
-    console.log(options.url, options.data);
+    // console.log('options.method & options.url & options.data: ', options.method, options.url, options.data);
+    // console.log('requestUrl & requestData: ', requestUrl, requestData);
 
-    xhr.open(options.method, options.url);
-    xhr.responseType = options.responseType;
-
-    xhr.onload = () => {
-        try {
-            const result = xhr.response;
-            options.callback(null, result);
-        } catch (e) {
-            options.callback(e, null);
-        }
-    };
-
-    xhr.onerror = () => {
-        console.warn('Ошибка соединения!');
-    };
-
-    if (options.method.toUpperCase() === 'GET') {
-        xhr.send();
-    } else {
-        xhr.send(options.data);
+    if (options.responseType) {
+        xhr.responseType = options.responseType;
     }
-
+    try {
+        xhr.open(options.method, requestUrl);
+        xhr.send(requestData);
+    }
+    catch (err) {
+        error = err;
+        options.callback(error, result);
+    }
 };

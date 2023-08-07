@@ -29,10 +29,17 @@ class CreateTransactionForm extends AsyncForm {
           const selectExpense = document.getElementById('expense-accounts-list');
           selectIncome.innerHTML = '';
           selectExpense.innerHTML = '';
-          response.data.forEach(account => {
-            selectIncome.insertAdjacentHTML('beforeend', `<option value="${account.id}">${account.name}</option>`);
-            selectExpense.insertAdjacentHTML('beforeend', `<option value="${account.id}">${account.name}</option>`);
-          });
+          const activeAccount = App.getWidget('accounts').activeCountId;
+          const html = response.data
+              .reduce((total, account) => total += `<option value="${account.id}" 
+                                                    ${account.id === activeAccount ? 'selected' : ''}>
+                                                    ${account.name}</option>`, '');
+          selectIncome.insertAdjacentHTML('beforeend', html);
+          selectExpense.insertAdjacentHTML('beforeend', html);
+          // response.data.forEach(account => {
+          //   selectIncome.insertAdjacentHTML('beforeend', `<option value="${account.id}">${account.name}</option>`);
+          //   selectExpense.insertAdjacentHTML('beforeend', `<option value="${account.id}">${account.name}</option>`);
+          // });
         }
         if (response && !response.success) {
           console.warn('Не удалось получить список счетов. ', response.error);
@@ -59,7 +66,9 @@ class CreateTransactionForm extends AsyncForm {
         App.getModal( 'newExpense' ).close();
         App.getForm('createIncome').element.reset();
         App.getForm('createExpense').element.reset();
-        App.update();
+        // App.update(); // слишком много запросов приводит к ошибкам, достаточно обновить:
+        App.updatePages();
+        App.getWidget("accounts").update();
       } else {
         console.warn('Не удалось добавить транзакцию. ', response.error);
       }

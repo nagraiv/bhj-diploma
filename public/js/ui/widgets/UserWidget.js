@@ -26,6 +26,10 @@ class UserWidget {
    * авторизованного пользователя
    * */
   update(){
-    this.element.querySelector('.user-name').textContent = User.current().name;
+    const user = User.current();
+    if (!user) {
+      return;
+    }
+    this.element.querySelector('.user-name').textContent = user.name;
   }
 }

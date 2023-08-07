@@ -51,14 +51,24 @@
       "id": "3"
     },
     {
-      "name": "карманные деньги",
+      "name": "дебетовая карта",
       "user_id": "206b53clkqj2oj1",
-      "id": "206b784lkqj3eli"
+      "id": "206b7a4ll0la6sa"
     },
     {
-      "name": "долги",
+      "name": "Заначка",
       "user_id": "206b53clkqj2oj1",
-      "id": "206b5d8lkrvntox"
+      "id": "206b5r8ll0pt41x"
+    },
+    {
+      "name": "новый",
+      "user_id": "206b53clkqj2oj1",
+      "id": "206b620ll12izr4"
+    },
+    {
+      "name": "Заначка",
+      "user_id": "1",
+      "id": "206b9gcll12xu9b"
     }
   ],
   "transactions": [
@@ -234,33 +244,6 @@
       "created_at": "2023-07-31T07:00:46.895Z"
     },
     {
-      "id": "206b2polkqj3wdr",
-      "type": "income",
-      "name": "подарили на ДР",
-      "sum": 5000,
-      "account_id": "206b784lkqj3eli",
-      "user_id": "206b53clkqj2oj1",
-      "created_at": "2023-07-31T07:08:27.950Z"
-    },
-    {
-      "id": "206b2uolkqj4s98",
-      "type": "expense",
-      "name": "шоколадка",
-      "sum": 150,
-      "account_id": "206b784lkqj3eli",
-      "user_id": "206b53clkqj2oj1",
-      "created_at": "2023-07-31T07:09:09.260Z"
-    },
-    {
-      "id": "206b58olkru8rx5",
-      "type": "income",
-      "name": "нашёл под лавкой",
-      "sum": 500,
-      "account_id": "206b784lkqj3eli",
-      "user_id": "206b53clkqj2oj1",
-      "created_at": "2023-08-01T05:07:57.400Z"
-    },
-    {
       "id": "206b4wclkttdcbf",
       "type": "income",
       "name": "Капитализация счёта",
@@ -277,6 +260,141 @@
       "account_id": "1",
       "user_id": "1",
       "created_at": "2023-08-03T11:24:51.840Z"
+    },
+    {
+      "id": "206b7skll0lavfe",
+      "type": "expense",
+      "name": "купил проездной",
+      "sum": 720,
+      "account_id": "206b7a4ll0la6sa",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T08:07:34.297Z"
+    },
+    {
+      "id": "206b5dkll0lb9v0",
+      "type": "income",
+      "name": "стипендия",
+      "sum": 3600,
+      "account_id": "206b7a4ll0la6sa",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T08:07:53.003Z"
+    },
+    {
+      "id": "206b38oll0lvmc8",
+      "type": "expense",
+      "name": "абонплата интернет",
+      "sum": 450,
+      "account_id": "206b7a4ll0la6sa",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T08:23:42.295Z"
+    },
+    {
+      "id": "206b6pgll0moauc",
+      "type": "expense",
+      "name": "купил продукты",
+      "sum": 1400,
+      "account_id": "206b7a4ll0la6sa",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T08:46:00.419Z"
+    },
+    {
+      "id": "206b5d4ll0mou54",
+      "type": "income",
+      "name": "родители перевели",
+      "sum": 12000,
+      "account_id": "206b7a4ll0la6sa",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T08:46:25.431Z"
+    },
+    {
+      "id": "206b1woll0q4974",
+      "type": "income",
+      "name": "подарили на ДР",
+      "sum": 7000,
+      "account_id": "206b5r8ll0pt41x",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T10:22:23.632Z"
+    },
+    {
+      "id": "206bzsll0q65rt",
+      "type": "expense",
+      "name": "потерял",
+      "sum": 1000,
+      "account_id": "206b5r8ll0pt41x",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T10:23:52.504Z"
+    },
+    {
+      "id": "206b93oll0qb779",
+      "type": "expense",
+      "name": "пообедал в кафе",
+      "sum": 900,
+      "account_id": "206b7a4ll0la6sa",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T10:27:47.636Z"
+    },
+    {
+      "id": "206bw8ll0qd9cw",
+      "type": "expense",
+      "name": "падорочный сертификат",
+      "sum": 3000,
+      "account_id": "206b5r8ll0pt41x",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T10:29:23.743Z"
+    },
+    {
+      "id": "206b3dkll13mgin",
+      "type": "income",
+      "name": "отложил на старость",
+      "sum": 20000,
+      "account_id": "206b9gcll12xu9b",
+      "user_id": "1",
+      "created_at": "2023-08-07T16:40:27.934Z"
+    },
+    {
+      "id": "206b3p4ll13nk8p",
+      "type": "expense",
+      "name": "поставил пломбу",
+      "sum": 4700,
+      "account_id": "206b9gcll12xu9b",
+      "user_id": "1",
+      "created_at": "2023-08-07T16:41:19.416Z"
+    },
+    {
+      "id": "206b9bsll13q3yx",
+      "type": "income",
+      "name": "зарплата",
+      "sum": 24900,
+      "account_id": "206b7a4ll0la6sa",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T16:43:18.296Z"
+    },
+    {
+      "id": "206b8s8ll13r9z2",
+      "type": "expense",
+      "name": "сигареты",
+      "sum": 1250,
+      "account_id": "206b5r8ll0pt41x",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T16:44:12.733Z"
+    },
+    {
+      "id": "206b1gsll13suv8",
+      "type": "expense",
+      "name": "потерял",
+      "sum": 500,
+      "account_id": "206b620ll12izr4",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T16:45:26.467Z"
+    },
+    {
+      "id": "206b46wll13u1um",
+      "type": "income",
+      "name": "нашел",
+      "sum": 1000,
+      "account_id": "206b620ll12izr4",
+      "user_id": "206b53clkqj2oj1",
+      "created_at": "2023-08-07T16:46:22.173Z"
     }
   ]
 }

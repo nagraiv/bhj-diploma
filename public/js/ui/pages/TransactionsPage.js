@@ -65,11 +65,13 @@ class TransactionsPage {
           console.warn(err);
         }
         if (response && response.success) {
-          App.getWidget('accounts').update();
-          // App.updateWidgets();
+          const accountsWidget = App.getWidget('accounts');
+          accountsWidget.activeCountId = null;
+          accountsWidget.update();
           App.getForm('createIncome').renderAccountsList();
-          App.getForm('createExpense').renderAccountsList();
-          // App.updateForms();
+          // метод renderAccountsList() обновляет список счетов сразу в двух формах: доходы и расходы
+          // поэтому второй вызов не требуется
+          // App.getForm('createExpense').renderAccountsList();
         } else {
           console.warn('Не получилось удалить счёт. ');
         }
@@ -164,7 +166,7 @@ class TransactionsPage {
    * в формат «10 марта 2019 г. в 03:20»
    * */
   formatDate(date){
-    const dateObj = new Date(Date.parse(date.replace(' ', 'T')));
+    const dateObj = new Date(date.replace(' ', 'T'));
     return `${dateObj.toLocaleString('ru-RU', {
       year: 'numeric', 
       month: 'long', 
@@ -207,9 +209,8 @@ class TransactionsPage {
    * */
   renderTransactions(data){
     const container = this.element.querySelector('.content');
+    const html = data.reduce((acc, el) => acc += this.getTransactionHTML(el), '');
     container.innerHTML = '';
-    data.forEach(item => {
-      container.insertAdjacentHTML('beforeend', this.getTransactionHTML(item));
-    })
+    container.insertAdjacentHTML('beforeend', html);
   }
 }

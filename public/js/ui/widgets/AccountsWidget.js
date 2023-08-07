@@ -18,6 +18,7 @@ class AccountsWidget {
       throw new Error('Отсутствует обязательный аргумент - элемент виджета.');
     }
     this.element = element;
+    this.activeCountId = null;
 
     this.registerEvents();
     this.update();
@@ -56,7 +57,6 @@ class AccountsWidget {
    * метода renderItem()
    * */
   update() {
-    const that = this;
     Account.list(
         User.current(),
         (err, response) => {
@@ -64,9 +64,9 @@ class AccountsWidget {
           if (err !== null) {
             console.warn(err);
           }
-          that.clear();
+          this.clear();
           if (response && response.data) {
-            that.renderItem(response.data);
+            this.renderItem(response.data);
           }
           if (response && !response.success) {
             console.warn('Не удалось получить список счетов. ', response.error);
@@ -94,8 +94,11 @@ class AccountsWidget {
    * */
   onSelectAccount( element ) {
     this.element.querySelector('.active')?.classList.remove('active');
+    this.activeCountId = element.dataset.id;
     element.classList.add('active');
     App.showPage( 'transactions', { account_id: element.dataset.id });
+    // в формах создания доходов и расходов активный счёт будет выбран по умолчанию
+    App.getForm('createExpense').renderAccountsList();
   }
 
   /**
@@ -104,10 +107,10 @@ class AccountsWidget {
    * item - объект с данными о счёте
    * */
   getAccountHTML(item){
-    return `<li class="account" data-id="${item.id}">
+    return `<li class="account ${item.id === this.activeCountId ? 'active' : ''}" data-id="${item.id}">
                 <a href="#">
                     <span>${item.name}</span> /
-                    <span>${item.sum}</span>
+                    <span>${item.sum}</span>  ₽
                 </a>
             </li>`;
   }
@@ -119,8 +122,7 @@ class AccountsWidget {
    * и добавляет его внутрь элемента виджета
    * */
   renderItem(data){
-    data.forEach(obj => {
-      this.element.insertAdjacentHTML('beforeend', this.getAccountHTML(obj));
-    });
+    const html = data.reduce((acc, el) => acc += this.getAccountHTML(el), '');
+    this.element.insertAdjacentHTML('beforeend', html);
   }
 }

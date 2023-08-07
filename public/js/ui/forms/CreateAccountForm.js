@@ -17,6 +17,9 @@ class CreateAccountForm extends AsyncForm {
       if (response && response.success) {
         App.getModal( 'createAccount' ).close();
         App.getForm('createAccount').element.reset();
+        // новый счёт сразу делаем активным и настраиваем отображение страницы транзакций
+        App.getWidget('accounts').activeCountId = response.account.id;
+        App.getPage('transactions').lastOptions = { account_id: response.account.id };
         App.update();
       } else {
         console.warn('Ошибка создания счёта: ', response?.error);
